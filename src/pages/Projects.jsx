@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { toast } from "react-toastify";
 
 const projects = [
   {
@@ -17,14 +18,14 @@ const projects = [
     image: "/studypage.png",
     desc: "A full-stack study platform with secure authentication, admin dashboard, cloud-based media uploads, and email notifications. Features include notes management, progress tracking, and scalable backend APIs.",
     tech: ["Next.js", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Cloudinary", "Resend"],
-    link: "#",
+    link: "/Study",
   },
   {
     title: "E-Commerce Platform",
     image: "/e-commerce.png", 
     desc: "A full-stack e-commerce platform with product management, secure authentication, cart & checkout system, and admin dashboard. Includes cloud image uploads and scalable backend APIs.",
     tech: ["Next.js", "Tailwind CSS", "Node.js", "Express", "MongoDB", "Stripe", "Cloudinary"],
-    link: "/maintenance",
+    link: "/Commerce",
   }
   // {
   //   title: "Task Manager App",
@@ -95,13 +96,22 @@ const Projects = () => {
 
                 {/* BUTTON AT BOTTOM */}
                 <div className="mt-auto pt-6">
-                  <Link
-                    href={project.link}
-                    target="_blank"
-                    className="inline-flex items-center gap-1 text-blue-500 dark:text-blue-400 text-sm font-medium hover:underline"
-                  >
-                    View Project →
-                  </Link>
+                  {["/Study", "/Commerce"].includes(project.link) ? (
+                    <button
+                      onClick={() => toast.info(" This project is currently under maintenance.")}
+                      className="inline-flex items-center gap-1 text-blue-500 dark:text-blue-400 text-sm font-medium hover:underline cursor-pointer"
+                    >
+                      View Project →
+                    </button>
+                  ) : (
+                    <Link
+                      href={project.link}
+                      target="_blank"
+                      className="inline-flex items-center gap-1 text-blue-500 dark:text-blue-400 text-sm font-medium hover:underline"
+                    >
+                      View Project →
+                    </Link>
+                  )}
                 </div>
 
               </div>
