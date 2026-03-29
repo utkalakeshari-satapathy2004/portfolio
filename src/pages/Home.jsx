@@ -6,6 +6,7 @@ import HeroPage from '@/pages/HeroPage'
 import Projects from '@/pages/Projects'
 import Skills from '@/pages/Skills'
 import Footer from '@/components/Footer'
+import ChatBot from '@/components/ChatBot'
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <Projects/>
       <Contact/>
       <Footer/>
+      <ChatBot/>
     </div>
   )
 }

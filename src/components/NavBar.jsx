@@ -37,7 +37,10 @@ const NavBar = () => {
                         </div>
 
                         {/* Button */}
-                        <button className="hidden md:block border border-blue-400 text-blue-400 px-4 py-1 rounded-full text-sm hover:bg-blue-400 hover:text-white transition">
+                        <button
+                            className="hidden md:block border border-blue-400 text-blue-400 px-4 py-1 rounded-full text-sm hover:bg-blue-400 hover:text-white transition"
+                            onClick={() => window.dispatchEvent(new CustomEvent("open-chatbot"))}
+                        >
                             ASK AI ✨
                         </button>
 
