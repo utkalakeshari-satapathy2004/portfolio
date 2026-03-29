@@ -15,7 +15,7 @@ const NavBar = () => {
 
                     {/* Logo */}
                     <h1 className="text-gray-900 dark:text-white text-lg font-semibold tracking-wide">
-                        Utkala
+                        {/* Utkala */}
                     </h1>
 
                     {/* Desktop Menu */}
