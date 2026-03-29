@@ -51,7 +51,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-400 uppercase tracking-wider">Email</p>
-                                    <p className="text-sm font-medium text-gray-900 dark:text-white">utkala@example.com</p>
+                                    <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="text-sm font-medium text-gray-900 dark:text-white">{process.env.NEXT_PUBLIC_EMAIL}</Link>
                                 </div>
                             </div>
 
@@ -71,7 +71,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-400 uppercase tracking-wider">LinkedIn</p>
-                                    <Link href="#" className="text-sm font-medium text-blue-500 hover:underline">linkedin.com/in/utkala</Link>
+                                    <Link href={process.env.NEXT_PUBLIC_LINKEDIN} target="blank" className="text-sm font-medium text-blue-500 hover:underline">UTKALAKESHARI SATAPATHY</Link>
                                 </div>
                             </div>
                         </div>

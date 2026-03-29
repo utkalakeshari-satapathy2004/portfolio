@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FaArrowUp, FaGithubSquare, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
 import { RiCopyrightFill } from "react-icons/ri";
 
 
@@ -25,14 +26,14 @@ const Footer = () => {
                 </h2>
 
                 <div className="flex items-center gap-6 text-gray-600 dark:text-gray-400">
-                    <Link href="#" className="hover:text-blue-500 hover:scale-110 transition">
+                    <Link href={process.env.NEXT_PUBLIC_GITHUB} target="blank"  className="hover:text-blue-500 hover:scale-110 transition">
                         <FaGithubSquare className="w-5 h-5"/>
                     </Link>
-                    <Link href="#" className="hover:text-blue-500 hover:scale-110 transition">
+                    <Link href={process.env.NEXT_PUBLIC_LINKEDIN} target="blank" className="hover:text-blue-500 hover:scale-110 transition">
                         <FaLinkedin className="w-5 h-5" />
                     </Link>
-                    <Link href="#" className="hover:text-blue-500 hover:scale-110 transition">
-                        <FaSquareXTwitter className="w-5 h-5" />
+                    <Link  href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="hover:text-blue-500 hover:scale-110 transition">
+                        <MdEmail className="w-5 h-5" />
                     </Link>
                 </div>
 
