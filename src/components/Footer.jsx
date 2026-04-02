@@ -9,7 +9,9 @@ import { RiCopyrightFill } from "react-icons/ri";
 
 
 const Footer = () => {
-    const { navOpen } = useUI();
+    const ui = useUI();
+    const navOpen = ui?.navOpen ?? false;
+
     if (navOpen) return null;
 
     const scrollToTop = () => {

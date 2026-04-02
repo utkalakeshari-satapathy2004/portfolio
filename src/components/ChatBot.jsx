@@ -89,8 +89,11 @@ const UserMessage = ({ text }) => (
 );
 
 export default function ChatBot() {
-  const { navOpen } = useUI();
+  const ui = useUI();
+  const navOpen = ui?.navOpen ?? false;
+
   if (navOpen) return null;
+  
   const [open, setOpen] = useState(false);
 
   useEffect(() => {

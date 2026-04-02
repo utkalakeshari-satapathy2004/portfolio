@@ -8,7 +8,7 @@ import { useUI } from "@/hooks/HideModal";
 import { BsRobot } from "react-icons/bs";
 
 const NavBar = () => {
-    const { navOpen: open, setNavOpen: setOpen } = useUI();
+    const { navOpen: open, setNavOpen: setOpen } = useUI() || {};
 
     const handleScroll = (id) => {
         const el = document.getElementById(id);
