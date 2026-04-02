@@ -1,5 +1,6 @@
 "use client";
 
+import { useUI } from "@/hooks/HideModal";
 import Link from "next/link";
 import { FaArrowUp, FaGithubSquare, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
@@ -8,6 +9,8 @@ import { RiCopyrightFill } from "react-icons/ri";
 
 
 const Footer = () => {
+    const { navOpen } = useUI();
+    if (navOpen) return null;
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -26,31 +29,33 @@ const Footer = () => {
                 </h2>
 
                 <div className="flex items-center gap-6 text-gray-600 dark:text-gray-400">
-                    <Link href={process.env.NEXT_PUBLIC_GITHUB} target="blank"  className="hover:text-blue-500 hover:scale-110 transition">
-                        <FaGithubSquare className="w-5 h-5"/>
+                    <Link href={process.env.NEXT_PUBLIC_GITHUB} target="blank" className="hover:text-blue-500 hover:scale-110 transition">
+                        <FaGithubSquare className="w-5 h-5" />
                     </Link>
                     <Link href={process.env.NEXT_PUBLIC_LINKEDIN} target="blank" className="hover:text-blue-500 hover:scale-110 transition">
                         <FaLinkedin className="w-5 h-5" />
                     </Link>
-                    <Link  href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="hover:text-blue-500 hover:scale-110 transition">
+                    <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`} className="hover:text-blue-500 hover:scale-110 transition">
                         <MdEmail className="w-5 h-5" />
                     </Link>
                 </div>
 
                 <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
-                    <RiCopyrightFill/> {new Date().getFullYear()} Utkalakeshari All rights reserved.
+                    <RiCopyrightFill /> {new Date().getFullYear()} Utkalakeshari All rights reserved.
                 </p>
 
             </div>
 
             {/* Floating scroll-to-top button */}
-            <button
-                onClick={scrollToTop}
-                aria-label="Back to top"
-                className="fixed bottom-24 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg bg-blue-500 hover:bg-blue-600 text-white transition-all duration-300 hover:scale-110"
-            >
-                <FaArrowUp className="w-4 h-4" />
-            </button>
+            {!navOpen && (
+                <button
+                    onClick={scrollToTop}
+                    aria-label="Back to top"
+                    className="fixed bottom-24 right-6 z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg bg-blue-500 hover:bg-blue-600 text-white transition-all duration-300 hover:scale-110"
+                >
+                    <FaArrowUp className="w-4 h-4" />
+                </button>
+            )}
 
         </footer>
     );

@@ -2,6 +2,7 @@
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { UIProvider} from "@/hooks/HideModal";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,15 +15,10 @@ export default function RootLayout({ children }) {
       lang="en"
       className=" h-full antialiased"
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||!t){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}catch(e){}})();`,
-          }}
-        />
-      </head>
+
       <body className="min-h-full flex flex-col">
-        {children}
+          <UIProvider>
+        {children}</UIProvider>
         <ToastContainer position="top-right" theme="colored" />
       </body>
     </html>

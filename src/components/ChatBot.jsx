@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoChatbubbleEllipses, IoClose, IoSend } from "react-icons/io5";
+import { useUI } from "@/hooks/HideModal";
 
 const knowledge = [
   {
@@ -88,6 +89,8 @@ const UserMessage = ({ text }) => (
 );
 
 export default function ChatBot() {
+  const { navOpen } = useUI();
+  if (navOpen) return null;
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
