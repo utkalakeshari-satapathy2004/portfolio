@@ -32,17 +32,17 @@ const NavBar = () => {
                     <div className="flex items-center justify-between">
 
                         {/* Logo */}
-                        <h1 className="text-gray-900 dark:text-white text-lg font-semibold">
+                        <h1 className="text-gray-900 dark:text-white text-lg font-semibold cursor-pointer">
                             Utkala
                         </h1>
 
                         {/* Desktop Menu */}
                         <div className="hidden md:flex gap-8 text-sm text-gray-600 dark:text-gray-200">
-                            <button onClick={() => handleScroll("home")}>HOME</button>
-                            <button onClick={() => handleScroll("about")}>ABOUT</button>
-                            <button onClick={() => handleScroll("experience")}>EXPERIENCE</button>
-                            <button onClick={() => handleScroll("projects")}>PROJECTS</button>
-                            <button onClick={() => handleScroll("contact")}>CONTACT</button>
+                            <button className="cursor-pointer hover:text-blue-500 hover:underline" onClick={() => handleScroll("home")}>HOME</button>
+                            <button className="cursor-pointer hover:text-blue-500 hover:underline" onClick={() => handleScroll("about")}>ABOUT</button>
+                            <button className="cursor-pointer hover:text-blue-500 hover:underline" onClick={() => handleScroll("experience")}>EXPERIENCE</button>
+                            <button className="cursor-pointer hover:text-blue-500 hover:underline" onClick={() => handleScroll("projects")}>PROJECTS</button>
+                            <button className="cursor-pointer hover:text-blue-500 hover:underline" onClick={() => handleScroll("contact")}>CONTACT</button>
                         </div>
 
                         {/* Right */}
@@ -52,7 +52,7 @@ const NavBar = () => {
                             </div>
 
                             <button
-                                className="flex gap-1 border border-blue-400 text-blue-400 px-4 py-1 rounded-full text-sm hover:bg-blue-400 hover:text-white"
+                                className="flex gap-1 border border-blue-400 text-blue-400 px-4 py-1 rounded-full text-sm hover:bg-blue-400 hover:text-white cursor-pointer"
                                 onClick={() => window.dispatchEvent(new CustomEvent("open-chatbot"))}
                             >
                                 <span className="hidden sm:block">ASK AI ✨</span>
@@ -89,23 +89,23 @@ const NavBar = () => {
                 </button>
 
                 {/* Menu Items */}
-                <button onClick={() => { handleScroll("home"); setOpen(false); }}>
+                <button className="cursor-pointer hover:text-blue-500" onClick={() => { handleScroll("home"); setOpen(false); }}>
                     Home
                 </button>
 
-                <button onClick={() => { handleScroll("about"); setOpen(false); }}>
+                <button className="cursor-pointer hover:text-blue-500" onClick={() => { handleScroll("about"); setOpen(false); }}>
                     About Me
                 </button>
 
-                <button onClick={() => { handleScroll("experience"); setOpen(false); }}>
+                <button className="cursor-pointer hover:text-blue-500" onClick={() => { handleScroll("experience"); setOpen(false); }}>
                     Experience
                 </button>
 
-                <button onClick={() => { handleScroll("projects"); setOpen(false); }}>
+                <button className="cursor-pointer hover:text-blue-500" onClick={() => { handleScroll("projects"); setOpen(false); }}>
                     Projects
                 </button>
 
-                <button onClick={() => { handleScroll("contact"); setOpen(false); }}>
+                <button className="cursor-pointer hover:text-blue-500" onClick={() => { handleScroll("contact"); setOpen(false); }}>
                     Contact
                 </button>
 

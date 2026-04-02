@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { BiLocationPlus } from "react-icons/bi";
-import { FaLinkedin } from "react-icons/fa";
+import { FaFilePdf, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 const Contact = () => {
@@ -72,6 +72,16 @@ const Contact = () => {
                                 <div>
                                     <p className="text-xs text-gray-400 uppercase tracking-wider">LinkedIn</p>
                                     <Link href={process.env.NEXT_PUBLIC_LINKEDIN} target="blank" className="text-sm font-medium text-blue-500 hover:underline">UTKALAKESHARI SATAPATHY</Link>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
+                                    <FaFilePdf  className="w-5 h-5 text-[#2b80ff]"/>
+                                </div>
+                                <div>
+                                    <p className="text-xs text-gray-400 uppercase tracking-wider">Resume</p>
+                                    <Link href={process.env.NEXT_PUBLIC_RESUME} target="blank" className="text-sm font-medium text-blue-500 hover:underline">UTKALAKESHARI SATAPATHY</Link>
                                 </div>
                             </div>
                         </div>
