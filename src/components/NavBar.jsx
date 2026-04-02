@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import ThemeToggle from "../hooks/ThemeToggle";
 import { IoMdClose } from "react-icons/io";
 import { useUI } from "@/hooks/HideModal";
+import { BsRobot } from "react-icons/bs";
 
 const NavBar = () => {
     const { navOpen: open, setNavOpen: setOpen } = useUI();
@@ -46,7 +47,7 @@ const NavBar = () => {
 
                         {/* Right */}
                         <div className="flex items-center gap-4">
-                            <div className="">
+                            <div className="hidden sm:block">
                                 <ThemeToggle />
                             </div>
 
@@ -54,8 +55,10 @@ const NavBar = () => {
                                 className="flex gap-1 border border-blue-400 text-blue-400 px-4 py-1 rounded-full text-sm hover:bg-blue-400 hover:text-white"
                                 onClick={() => window.dispatchEvent(new CustomEvent("open-chatbot"))}
                             >
-                                <span className="hidden sm:block">ASK</span>
-                                AI ✨
+                                <span className="hidden sm:block">ASK AI ✨</span>
+                                <span className="block sm:hidden"><BsRobot /></span>
+                                {/* <span className="hidden sm:block"> </span> */}
+
                             </button>
 
                             {/* Mobile Toggle */}
@@ -106,6 +109,9 @@ const NavBar = () => {
                     Contact
                 </button>
 
+                <div onClick={() => setOpen(false)}>
+                    <ThemeToggle />
+                </div>
 
             </div>
         </>
