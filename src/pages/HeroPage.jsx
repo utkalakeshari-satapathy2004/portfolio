@@ -123,7 +123,7 @@ const HeroPage = () => {
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl sm:text-6xl md:text-7xl font-bold 
+          className="text-3xl sm:text-6xl md:text-7xl font-bold 
           bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 
           bg-clip-text text-transparent
           dark:text-white dark:bg-none"
