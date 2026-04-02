@@ -9,16 +9,50 @@ import { MdEmail } from "react-icons/md";
 const Contact = () => {
     const [form, setForm] = useState({ name: "", email: "", message: "" });
     const [sent, setSent] = useState(false);
-
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const WEB3FORMS_URL = process.env.NEXT_PUBLIC_WEB3FORMS_URL;
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        setSent(true);
-    };
+        setLoading(true);
+        setError("");
 
+        try {
+            const res = await fetch(WEB3FORMS_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+                    name: form.name,
+                    email: form.email,
+                    message: form.message,
+                    subject: "New Contact Form Submission",
+                }),
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                setSent(true);
+                setForm({ name: "", email: "", message: "" });
+
+                setTimeout(() => setSent(false), 3000);
+            } else {
+                setError("Something went wrong. Please try again.");
+            }
+        } catch (err) {
+            setError("Network error. Please try again later.");
+        } finally {
+            setLoading(false);
+        }
+    };
     return (
         <section
             id="contact"
@@ -47,7 +81,7 @@ const Contact = () => {
                         <div className="space-y-5">
                             <div className="flex items-center gap-4">
                                 <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                                   <MdEmail className="w-5 h-5 text-[#2b80ff]"/>
+                                    <MdEmail className="w-5 h-5 text-[#2b80ff]" />
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-400 uppercase tracking-wider">Email</p>
@@ -57,7 +91,7 @@ const Contact = () => {
 
                             <div className="flex items-center gap-4">
                                 <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                                    <BiLocationPlus className="w-5 h-5 text-[#2b80ff]"/>
+                                    <BiLocationPlus className="w-5 h-5 text-[#2b80ff]" />
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-400 uppercase tracking-wider">Location</p>
@@ -67,7 +101,7 @@ const Contact = () => {
 
                             <div className="flex items-center gap-4">
                                 <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                                    <FaLinkedin className="w-5 h-5 text-[#2b80ff]"/>
+                                    <FaLinkedin className="w-5 h-5 text-[#2b80ff]" />
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-400 uppercase tracking-wider">LinkedIn</p>
@@ -77,7 +111,7 @@ const Contact = () => {
 
                             <div className="flex items-center gap-4">
                                 <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                                    <FaFilePdf  className="w-5 h-5 text-[#2b80ff]"/>
+                                    <FaFilePdf className="w-5 h-5 text-[#2b80ff]" />
                                 </div>
                                 <div>
                                     <p className="text-xs text-gray-400 uppercase tracking-wider">Resume</p>
