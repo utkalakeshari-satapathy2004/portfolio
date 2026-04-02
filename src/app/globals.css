@@ -75,3 +75,49 @@
 }
 
 
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+@keyframes twinkleSlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-twinkle-slow {
+  animation: twinkleSlow 5s ease-in-out infinite;
+}
+
+/* Shooting star */
+.shooting-star {
+  position: absolute;
+  top: 15%;
+  left: -10%;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, white, transparent);
+  opacity: 0.7;
+  transform: rotate(25deg);
+  animation: shoot 7s linear infinite;
+}
+
+.delay-2000 {
+  animation-delay: 2s;
+}
+
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0) rotate(25deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  100% {
+    transform: translateX(120vw) translateY(50vh) rotate(25deg);
+    opacity: 0;
+  }
+}

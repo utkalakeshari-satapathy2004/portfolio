@@ -9,8 +9,8 @@ const projects = [
   {
     title: "Portfolio Website",
     image: "/portfolio.png",
-    desc: "A modern developer portfolio built with Next.js, Tailwind, and smooth animations.",
-    tech: ["Next.js", "Tailwind", "Framer Motion"],
+    desc: "A modern developer portfolio built with Next.js, Tailwind,Web3forms and smooth animations.",
+    tech: ["Next.js", "Tailwind", "Framer Motion","Web3forms"],
     link: "#",
   },
   {
