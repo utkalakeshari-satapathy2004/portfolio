@@ -1,8 +1,37 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 
 const HeroPage = () => {
+  const smallStars = useMemo(
+    () =>
+      Array.from({ length: 70 }, () => ({
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        delay: Math.random() * 5,
+      })),
+    []
+  );
+
+  const mediumStars = useMemo(
+    () =>
+      Array.from({ length: 40 }, () => ({
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        delay: Math.random() * 6,
+      })),
+    []
+  );
+
+  const bigStars = useMemo(
+    () =>
+      Array.from({ length: 20 }, () => ({
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+      })),
+    []
+  );
   const handleScroll = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -48,14 +77,14 @@ const HeroPage = () => {
 
         {/* SMALL STARS */}
         <div className="absolute inset-0">
-          {[...Array(70)].map((_, i) => (
+          {smallStars.map((star, i) => (
             <span
               key={"s-" + i}
               className="absolute w-[1px] h-[1px] rounded-full bg-white/50 animate-twinkle"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
+                left: `${star.left}%`,
+                top: `${star.top}%`,
+                animationDelay: `${star.delay}s`,
               }}
             />
           ))}
@@ -63,14 +92,14 @@ const HeroPage = () => {
 
         {/* MEDIUM STARS */}
         <div className="absolute inset-0">
-          {[...Array(40)].map((_, i) => (
+          {mediumStars.map((star, i) => (
             <span
               key={"m-" + i}
               className="absolute w-[2px] h-[2px] rounded-full bg-white/80 animate-twinkle-slow"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 6}s`,
+                left: `${star.left}%`,
+                top: `${star.top}%`,
+                animationDelay: `${star.delay}s`,
               }}
             />
           ))}
@@ -78,13 +107,13 @@ const HeroPage = () => {
 
         {/* BIG STARS */}
         <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
+          {bigStars.map((star, i) => (
             <span
               key={"b-" + i}
               className="absolute w-[3px] h-[3px] rounded-full bg-white animate-pulse"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${star.left}%`,
+                top: `${star.top}%`,
               }}
             />
           ))}
