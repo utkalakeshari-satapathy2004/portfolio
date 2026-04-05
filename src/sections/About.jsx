@@ -7,7 +7,7 @@ const About = () => {
     <section
       id="about"
       className="w-full bg-white dark:bg-[#020716] px-6 py-20"
-    >
+    > 
       <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
