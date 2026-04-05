@@ -1,14 +1,33 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ThemeToggle from "../hooks/ThemeToggle";
 import { IoMdClose } from "react-icons/io";
 import { useUI } from "@/hooks/HideModal";
 import { BsRobot } from "react-icons/bs";
+import { IoHomeOutline, IoHomeSharp, IoBriefcaseOutline, IoMailOutline, IoMail, IoGridOutline, IoGrid } from "react-icons/io5";
 
 const NavBar = () => {
     const { navOpen: open, setNavOpen: setOpen } = useUI() || {};
+    const [activeSection, setActiveSection] = useState("home");
+
+    useEffect(() => {
+        const sections = ["home", "about", "projects", "contact"];
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) setActiveSection(entry.target.id);
+                });
+            },
+            { threshold: 0.4 }
+        );
+        sections.forEach((id) => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+        return () => observer.disconnect();
+    }, []);
 
     const handleScroll = (id) => {
         const el = document.getElementById(id);
@@ -27,7 +46,7 @@ const NavBar = () => {
         <>
             {/* NAVBAR */}
             <div className="fixed top-4 left-0 w-full flex justify-center z-50">
-                <nav className="w-[90%] max-w-6xl backdrop-blur-[2px] bg-transparent border border-black/10 dark:border-white/20 rounded-full px-6 py-3 shadow-lg">
+                <nav className="w-[90%] hidden md:block max-w-6xl backdrop-blur-[2px] bg-transparent border border-black/10 dark:border-white/20 rounded-full px-6 py-3 shadow-lg">
 
                     <div className="flex items-center justify-between">
 
@@ -113,6 +132,61 @@ const NavBar = () => {
                     <ThemeToggle />
                 </div>
 
+            </div>
+
+            {/* BOTTOM MOBILE NAV */}
+            <div className="fixed bottom-0 left-0 w-full z-50 md:hidden bg-white dark:bg-[#0d1117] border-t border-gray-200 dark:border-white/10 shadow-lg">
+                <div className="flex items-center justify-around py-2">
+
+                    {/* Home */}
+                    <button
+                        onClick={() => handleScroll("home")}
+                        className={`flex flex-col items-center gap-0.5 px-4 py-1 text-xs transition-colors ${
+                            activeSection === "home"
+                                ? "text-blue-500"
+                                : "text-gray-500 dark:text-gray-400"
+                        }`}
+                    >
+                        {activeSection === "home" ? <IoHomeSharp className="text-xl" /> : <IoHomeOutline className="text-xl" />}
+                        <span>Home</span>
+                    </button>
+
+                    {/* Projects */}
+                    <button
+                        onClick={() => handleScroll("projects")}
+                        className={`flex flex-col items-center gap-0.5 px-4 py-1 text-xs transition-colors ${
+                            activeSection === "projects"
+                                ? "text-blue-500"
+                                : "text-gray-500 dark:text-gray-400"
+                        }`}
+                    >
+                        {activeSection === "projects" ? <IoGrid className="text-xl" /> : <IoGridOutline className="text-xl" />}
+                        <span>Projects</span>
+                    </button>
+
+                    {/* Contact */}
+                    <button
+                        onClick={() => handleScroll("contact")}
+                        className={`flex flex-col items-center gap-0.5 px-4 py-1 text-xs transition-colors ${
+                            activeSection === "contact"
+                                ? "text-blue-500"
+                                : "text-gray-500 dark:text-gray-400"
+                        }`}
+                    >
+                        {activeSection === "contact" ? <IoMail className="text-xl" /> : <IoMailOutline className="text-xl" />}
+                        <span>Contact</span>
+                    </button>
+
+                    {/* Menu */}
+                    <button
+                        onClick={() => setOpen(true)}
+                        className="flex flex-col items-center gap-0.5 px-4 py-1 text-xs text-gray-500 dark:text-gray-400 transition-colors"
+                    >
+                        <IoBriefcaseOutline className="text-xl" />
+                        <span>Menu</span>
+                    </button>
+
+                </div>
             </div>
         </>
     );
